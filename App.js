@@ -1,20 +1,28 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import TabNavigation from "./components/tabNavigation";
+import Home from "./pages/home";
+import Mercearia from "./pages/mercearia";
+import Mercearias from "./pages/mercearias";
+import Registo from "./pages/registo";
+import WelcomeScreen from "./pages/welcomeScreen";
+
+const MyTheme = {
+  colors: {
+    background: "#1b305d",
+    color: "#fff",
+  },
+};
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer theme={MyTheme}>
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="TabNavigation" component={Mercearia} />
+        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Mercearias" component={Mercearias} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
