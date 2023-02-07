@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import TabNavigation from "./components/tabNavigation";
 import ComprasRecent from "./pages/comprasRecentes";
 import Conta from "./pages/conta";
+import Favorities from "./pages/favority";
 import Home from "./pages/home";
 import List from "./pages/Lista";
 import Login from "./pages/login";
@@ -33,6 +34,8 @@ export default function App() {
         <Stack.Screen name="List" component={List} />
         <Stack.Screen name="ComprasRecent" component={ComprasRecent} />
         <Stack.Screen name="Mercearia" component={Mercearia} />
+        <Stack.Screen name="Favorities" component={Favorities} />
+
       </Stack.Navigator>
     </NavigationContainer>
   );

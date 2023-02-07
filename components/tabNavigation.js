@@ -1,6 +1,7 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import Conta from "../pages/conta";
+import Favorities from "../pages/favority";
 import Home from "../pages/home";
 import List from "../pages/Lista";
 import Mercearias from "../pages/mercearias";
@@ -39,7 +40,7 @@ const TabNavigation = () => {
     >
       <Tab.Screen name="Início" component={Home} />
       <Tab.Screen name="List" component={List} />
-      <Tab.Screen name="Favoritos" component={Home} />
+      <Tab.Screen name="Favoritos" component={Favorities} />
       <Tab.Screen name="Mercearias" component={Mercearias} />
       <Tab.Screen name="Conta" component={Conta} />
     </Tab.Navigator>

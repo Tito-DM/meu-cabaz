@@ -28,7 +28,7 @@ const Mercearias = ({ navigation }) => {
               justifyContent: "center",
               alignItems: "center"
             }}>
-            <Fontisto name="shopping-store" size={30} />
+            <Fontisto name="shopping-store" size={23} />
             <Text>Mercearia do Dia</Text>
             </View>
             <Callout onPress={()=>navigation.navigate("Mercearia")}>
