@@ -1,8 +1,9 @@
-import { Image } from "react-native";
+import { Image, TouchableOpacity } from "react-native";
 import { Card, Text } from "react-native-paper";
 
-const CardComponent = ({ name, ofertas,width,height }) => {
+const CardComponent = ({ name, ofertas,width,height,navigation }) => {
   return (
+    <TouchableOpacity activeOpacity={1} onPress={()=> navigation.navigate('Mercearia')}>
     <Card
       mode="elevated"
       style={{
@@ -23,6 +24,7 @@ const CardComponent = ({ name, ofertas,width,height }) => {
         <Text variant="bodyMedium">{ofertas}</Text>
       </Card.Content>
     </Card>
+    </TouchableOpacity>
   );
 };
 

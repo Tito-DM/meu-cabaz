@@ -1,11 +1,14 @@
+import { useRoute } from "@react-navigation/native";
 import { StyleSheet, Text, View } from "react-native";
 import MapView, { PROVIDER_GOOGLE, Marker, Callout } from "react-native-maps";
 import AppBarComp from "../components/appBar";
 
-const Mercearias = () => {
+const Mercearias = ({navigation}) => {
+  const route = useRoute()
+
   return (
     <>
-      <AppBarComp />
+      <AppBarComp navigation={navigation} route={route} />
 
       <View style={styles.container}>
         <MapView

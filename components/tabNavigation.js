@@ -1,6 +1,7 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import Home from "../pages/home";
+import List from "../pages/Lista";
 import Mercearias from "../pages/mercearias";
 const Tab = createBottomTabNavigator();
 
@@ -14,7 +15,7 @@ const TabNavigation = () => {
 
           if (route.name === "Início") {
             iconName = "home";
-          } else if (route.name === "Reverva") {
+          } else if (route.name === "List") {
             iconName = "receipt-outline";
           } else if (route.name === "Mercearias") {
             iconName = "basket";
@@ -36,7 +37,7 @@ const TabNavigation = () => {
       })}
     >
       <Tab.Screen name="Início" component={Home} />
-      <Tab.Screen name="Reverva" component={Home} />
+      <Tab.Screen name="List" component={List} />
       <Tab.Screen name="Favoritos" component={Home} />
       <Tab.Screen name="Mercearias" component={Mercearias} />
       <Tab.Screen name="Conta" component={Home} />

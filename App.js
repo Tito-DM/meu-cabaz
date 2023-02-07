@@ -2,6 +2,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import TabNavigation from "./components/tabNavigation";
 import Home from "./pages/home";
+import List from "./pages/Lista";
 import Mercearia from "./pages/mercearia";
 import Mercearias from "./pages/mercearias";
 import Registo from "./pages/registo";
@@ -19,9 +20,13 @@ export default function App() {
   return (
     <NavigationContainer theme={MyTheme}>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="TabNavigation" component={Mercearia} />
+        <Stack.Screen name="Welcome" component={WelcomeScreen} />
+        <Stack.Screen name="Registo" component={Registo} />
+        <Stack.Screen name="TabNavigation" component={TabNavigation} />
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Mercearias" component={Mercearias} />
+        <Stack.Screen name="List" component={List} />
+        <Stack.Screen name="Mercearia" component={Mercearia} />
       </Stack.Navigator>
     </NavigationContainer>
   );

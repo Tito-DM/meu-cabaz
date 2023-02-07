@@ -1,7 +1,12 @@
 import { Image, SafeAreaView, Text, View } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
-const WelcomeScreen = () => {
+const WelcomeScreen = ({navigation}) => {
+
+  setTimeout(() => {
+    navigation.navigate("Registo")
+  }, 5000);
+  
   return (
     <SafeAreaView>
       <View

@@ -1,47 +1,56 @@
 import React from "react";
-import { ScrollView, View, Text, FlatList } from "react-native";
+import { ScrollView, View, Text, FlatList, Image } from "react-native";
 import { Searchbar } from "react-native-paper";
 import CardComponent from "../components/card";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import AppBarComp from "../components/appBar";
+import { useRoute } from "@react-navigation/native";
 const ANIMAL_NAMES = [
   {
     id: 1,
     name: "Peixe",
+    img: require("../assets/images/fish.png")
   },
   {
     id: 2,
     name: "Carne",
+    img: require("../assets/images/beef.png")
   },
   {
     id: 3,
     name: "Frutas",
+    img: require("../assets/images/fruits.png")
   },
   {
     id: 4,
     name: "Verduras",
+    img: require("../assets/images/vegetable.png")
   },
   {
     id: 5,
-    name: "Cow",
+    name: "Bebidas",
+    img: require("../assets/images/soft-drink.png")
+    
   },
   {
     id: 6,
     name: "Padarias",
+    img: require("../assets/images/grocery.png")
   },
   {
     id: 7,
-    name: "Horse",
+    name: "diversos",
+    img: require("../assets/images/shopping-bag.png")
   },
 ];
-const ItemRender = ({ name }) => {
+const ItemRender = ({ name,img }) => {
   return (
     <View
       style={{
         display: "flex",
         marginVertical: 10,
         alignItems: "center",
-        marginLeft: 10,
+        marginHorizontal: 10,
         height: 150,
       }}
     >
@@ -56,21 +65,26 @@ const ItemRender = ({ name }) => {
           backgroundColor: "#fff",
         }}
       >
-        <Ionicons name="basket" size={30} />
+        <Image source={img} style={{
+          width: 30,
+          height: 30,
+          resizeMode: "contain"
+        }} />
       </View>
       <Text style={{ color: "#fff" }}>{name}</Text>
     </View>
   );
 };
 
-const Home = () => {
+const Home = ({navigation}) => {
   const [searchQuery, setSearchQuery] = React.useState("");
+  const route = useRoute()
 
   const onChangeSearch = (query) => setSearchQuery(query);
 
   return (
     <>
-      <AppBarComp />
+      <AppBarComp  navigation={navigation} route={route}/>
       <Searchbar
         style={{
           borderRadius: 10,
@@ -83,7 +97,7 @@ const Home = () => {
 
       <FlatList
         data={ANIMAL_NAMES}
-        renderItem={({ item }) => <ItemRender name={item.name} />}
+        renderItem={({ item }) => <ItemRender name={item.name} img={item.img} />}
         keyExtractor={(item) => item.id}
         horizontal={true}
         showsHorizontalScrollIndicator={false}
@@ -123,24 +137,28 @@ const Home = () => {
           ofertas="ofertas até 20%"
           width="100%"
           height={180}
+          navigation={navigation}
         />
         <CardComponent
           name="Frutaria LoopBack"
           ofertas="ofertas até 10%"
           width="100%"
           height={180}
+          navigation={navigation}
         />
         <CardComponent
           name="Mercearia Dos Productos"
           ofertas="ofertas até 10%"
           width="100%"
           height={180}
+          navigation={navigation}
         />
         <CardComponent
           name="Mercearia Alegre"
           ofertas="ofertas até 10%"
           width="100%"
           height={180}
+          navigation={navigation}
         />
       </ScrollView>
     </>

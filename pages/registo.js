@@ -10,14 +10,15 @@ import {
 import { TextInput } from "react-native-paper";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
-
-const Registo = () => {
+const Registo = ({ navigation }) => {
   const [text, setText] = useState("");
   return (
     <SafeAreaView>
-      <View style={{
-        position: "relative"
-      }}>
+      <View
+        style={{
+          position: "relative",
+        }}
+      >
         <Image
           source={require("../assets/images/Vector.png")}
           style={{
@@ -25,7 +26,7 @@ const Registo = () => {
             resizeMode: "cover",
           }}
         />
-         <View
+        <View
           style={{
             display: "flex",
             alignItems: "center",
@@ -84,6 +85,8 @@ const Registo = () => {
         />
 
         <TouchableOpacity
+          activeOpacity={1}
+          onPress={() => navigation.navigate("TabNavigation")}
           style={{
             display: "flex",
             alignItems: "center",
@@ -109,13 +112,17 @@ const Registo = () => {
             alignItems: "center",
           }}
         >
-          <Text  style={{
+          <Text
+            style={{
               color: "#fff",
-            }}>Já tem uma conta?</Text>
+            }}
+          >
+            Já tem uma conta?
+          </Text>
           <Text
             style={{
               color: "#37B697",
-              marginLeft: 5
+              marginLeft: 5,
             }}
           >
             Entre aqui
