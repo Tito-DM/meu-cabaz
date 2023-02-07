@@ -10,7 +10,7 @@ import {
 import { TextInput } from "react-native-paper";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
-const Registo = ({ navigation }) => {
+const Login = ({ navigation }) => {
   const [data, setText] = useState({
     name:"",
     email: "",
@@ -58,15 +58,10 @@ const Registo = ({ navigation }) => {
       <View
         style={{
           marginHorizontal: 10,
-          marginTop:-30
+         
         }}
       >
-        <TextInput
-          label="Nome"
-          value={data.name}
-          style={style.textinputStyle}
-          onChangeText={(text) => setText({...data,name: text})}
-        />
+      
 
         <TextInput
           label="Email"
@@ -84,13 +79,7 @@ const Registo = ({ navigation }) => {
           onChangeText={(text) => setText({...data, passward: text,})}
         />
 
-        <TextInput
-          label="Repita a palavra-chave"
-          value={data.pass_confirmation}
-          style={style.textinputStyle}
-          secureTextEntry={true}
-          onChangeText={(text) => setText({...data, pass_confirmation: text})}
-        />
+    
 
         <TouchableOpacity
           activeOpacity={1}
@@ -110,7 +99,7 @@ const Registo = ({ navigation }) => {
               fontSize: 20,
             }}
           >
-            Registar
+            Entrar
           </Text>
         </TouchableOpacity>
         <View
@@ -125,11 +114,11 @@ const Registo = ({ navigation }) => {
               color: "#fff",
             }}
           >
-            Já tem uma conta?
+            cria uma conta?
           </Text>
           <TouchableOpacity
           activeOpacity={1}
-          onPress={()=>navigation.navigate("Login")}
+          onPress={()=>navigation.navigate("Registo")}
           >
           <Text
             style={{
@@ -153,4 +142,4 @@ const style = StyleSheet.create({
   },
 });
 
-export default Registo;
+export default Login;

@@ -1,10 +1,11 @@
 import { useRoute } from "@react-navigation/native";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import MapView, { PROVIDER_GOOGLE, Marker, Callout } from "react-native-maps";
 import AppBarComp from "../components/appBar";
+import Fontisto from "react-native-vector-icons/Fontisto";
 
-const Mercearias = ({navigation}) => {
-  const route = useRoute()
+const Mercearias = ({ navigation }) => {
+  const route = useRoute();
 
   return (
     <>
@@ -22,17 +23,28 @@ const Mercearias = ({navigation}) => {
           }}
         >
           <Marker coordinate={{ latitude: 37.78825, longitude: -122.4324 }}>
-            <Callout>
-              <View>
+            <View style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center"
+            }}>
+            <Fontisto name="shopping-store" size={30} />
+            <Text>Mercearia do Dia</Text>
+            </View>
+            <Callout onPress={()=>navigation.navigate("Mercearia")}>
+              <View
+                style={{
+                  width: 200,
+                }}
+              >
                 <Text>Mercearia Marques</Text>
                 <Text>Praceta Gervásio Lobato, nº 13</Text>
                 <Text>1234-452 Lisboa</Text>
                 <View>
                   <Text>21 12 34 567</Text>
                 </View>
-                <View>
-                  <Text>mais informações </Text>
-                </View>
+
+                <Text>mais informações </Text>
               </View>
             </Callout>
           </Marker>
@@ -44,7 +56,6 @@ const Mercearias = ({navigation}) => {
 
 const styles = StyleSheet.create({
   container: {
-    
     height: "100%",
     width: "100%",
     justifyContent: "flex-end",

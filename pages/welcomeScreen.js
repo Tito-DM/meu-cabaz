@@ -1,14 +1,18 @@
 import { Image, SafeAreaView, Text, View } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
+import { ActivityIndicator, MD2Colors } from 'react-native-paper';
 
 const WelcomeScreen = ({navigation}) => {
 
-  setTimeout(() => {
+   setTimeout(() => {
     navigation.navigate("Registo")
-  }, 5000);
+   }, 5000);
   
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{
+      position:"relative",
+      height: "100%"
+    }}>
       <View
         style={{
           position: "relative",
@@ -51,8 +55,20 @@ const WelcomeScreen = ({navigation}) => {
           >
             O Meu CaBaz
           </Text>
+         
         </View>
+        
       </View>
+      <View style={{
+        display:"flex",
+        alignItems: "center",
+        width: "100%",
+        position:"absolute",
+        bottom: 80
+      }}>
+      <ActivityIndicator animating={true} color={MD2Colors.green100}  size="large"/>
+      </View>
+     
     </SafeAreaView>
   );
 };

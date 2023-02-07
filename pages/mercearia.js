@@ -4,6 +4,7 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import MapView, { PROVIDER_GOOGLE, Marker, Callout } from "react-native-maps";
 import MerceariaCard from "../components/merceariaCard";
 import { useRoute } from "@react-navigation/native";
+import { useState } from "react";
 
 const PRODUCTS = [
   {
@@ -53,12 +54,13 @@ const PRODUCTS = [
   },
 ];
 
-const Mercearia = ({navigation}) => {
-  const route = useRoute()
+const Mercearia = ({ navigation }) => {
+  const route = useRoute();
+  const [favorityState, setFavorityState] = useState(false);
 
   return (
     <>
-      <AppBarComp navigation={navigation} route={route}/>
+      <AppBarComp navigation={navigation} route={route} />
       <View style={styles.container}>
         <MapView
           provider={PROVIDER_GOOGLE} // remove if not using Google Maps
@@ -93,15 +95,45 @@ const Mercearia = ({navigation}) => {
           padding: 5,
         }}
       >
-        <Text
+        <View
           style={{
-            color: "#fff",
-            fontSize: 20,
-            fontWeight: "bold",
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "space-between",
           }}
         >
-          Mercearia Do Senhor Manel
-        </Text>
+          <Text
+            style={{
+              color: "#fff",
+              fontSize: 20,
+              fontWeight: "bold",
+            }}
+          >
+            Mercearia Do Senhor Manel
+          </Text>
+          {favorityState ? (
+            <Ionicons
+              name="heart"
+              size={30}
+              color="#fff"
+              onPress={() => setFavorityState(!favorityState)}
+              style={{
+                marginRight: 5,
+              }}
+            />
+          ) : (
+            <Ionicons
+              name="heart-outline"
+              size={30}
+              color="#fff"
+              onPress={() => setFavorityState(!favorityState)}
+              style={{
+                marginRight: 5,
+              }}
+            />
+          )}
+        </View>
 
         <View
           style={{
