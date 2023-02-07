@@ -1,14 +1,18 @@
+import { useState } from "react";
 import { Image, Text, TouchableOpacity, View } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
 const MerceariaCard = ({ nome, discription, detalhe, price, img }) => {
+  const [favorityState, setFavorityState] = useState(false);
+
   return (
     <View
       style={{
         backgroundColor: "#fff",
         elevation: 1,
         margin: 5,
-        width:"47.5%"
+        width:"47.5%",
+        position: "relative"
         
       }}
     >
@@ -20,6 +24,34 @@ const MerceariaCard = ({ nome, discription, detalhe, price, img }) => {
           resizeMode: "cover",
         }}
       />
+
+      <View style={{
+        position: "absolute",
+        top: 0,
+        right: 0,
+      }}>
+      {favorityState ? (
+            <Ionicons
+              name="heart"
+              size={30}
+              color="#fff"
+              onPress={() => setFavorityState(!favorityState)}
+              style={{
+                marginRight: 5,
+              }}
+            />
+          ) : (
+            <Ionicons
+              name="heart-outline"
+              size={30}
+              color="#fff"
+              onPress={() => setFavorityState(!favorityState)}
+              style={{
+                marginRight: 5,
+              }}/>
+          )}
+      </View>
+
       <View
         style={{
           padding: 5,

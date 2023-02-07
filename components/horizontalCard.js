@@ -1,6 +1,6 @@
 import { Image, Text, View } from "react-native";
 
-const HorizontalCard = ({name,price,img}) => {
+const HorizontalCard = ({name,price,img, mercearia}) => {
   return (
     <View
       style={{
@@ -10,8 +10,6 @@ const HorizontalCard = ({name,price,img}) => {
         width: "100%",
         height: 100,
         justifyContent: "space-between",
-        backgroundColor: "#fff",
-        elevation: 2,
         marginVertical: 4,
       }}
     >
@@ -38,7 +36,7 @@ const HorizontalCard = ({name,price,img}) => {
         >
           <Text
             style={{
-              color: "#000",
+              color: "#fff",
               fontWeight: "bold",
               fontSize: 18,
             }}
@@ -54,7 +52,7 @@ const HorizontalCard = ({name,price,img}) => {
           >
             <Text
               style={{
-                color: "#00796b",
+                color: "#fff",
                 fontWeight: "bold",
               }}
             >
@@ -62,13 +60,18 @@ const HorizontalCard = ({name,price,img}) => {
             </Text>
             <Text
               style={{
-                color: "#00796b",
+                color: "#fff",
                 fontWeight: "bold",
               }}
             >
               €/kg
             </Text>
           </View>
+          <Text style={{
+            fontWeight: "bold",
+            color: "#fff"
+          }}
+          >{mercearia}</Text>
         </View>
       </View>
 
@@ -77,6 +80,7 @@ const HorizontalCard = ({name,price,img}) => {
           display: "flex",
           flexDirection: "row",
           alignItems: "center",
+          marginTop: -20,
           marginRight: 5,
         }}
       >
@@ -108,14 +112,14 @@ const HorizontalCard = ({name,price,img}) => {
         >
           <Text
             style={{
-              color: "#000",
+              color: "#fff",
             }}
           >
             6
           </Text>
           <Text
             style={{
-              color: "#000",
+              color: "#fff",
             }}
           >
             unit

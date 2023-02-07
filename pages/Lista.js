@@ -34,31 +34,42 @@ const List = ({ navigation }) => {
           name="Cenoura"
           price="12"
           img={require("../assets/images/carrot.jpg")}
+          mercearia="Mercearia manel"
         />
         <HorizontalCard
           name="Brocoli"
           price="12"
           img={require("../assets/images/brocoli.jpg")}
+          mercearia="Mercearia manel"
+
         />
         <HorizontalCard
           name="Tomates"
           price="12"
           img={require("../assets/images/tomates.jpg")}
+          mercearia="Mercearia manel"
+
         />
         <HorizontalCard
           name="Couve"
           price="12"
           img={require("../assets/images/couve1.jpg")}
+          mercearia="Mercearia  manel"
+
         />
         <HorizontalCard
           name="Repolho"
           price="12"
           img={require("../assets/images/couve.jpg")}
+          mercearia="Mercearia manel"
+
         />
         <HorizontalCard
           name="Cenoura"
           price="12"
           img={require("../assets/images/carrot.jpg")}
+          mercearia="Mercearia manel"
+
         />
       </ScrollView>
       <View

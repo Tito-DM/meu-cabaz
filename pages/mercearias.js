@@ -1,5 +1,5 @@
 import { useRoute } from "@react-navigation/native";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import MapView, { PROVIDER_GOOGLE, Marker, Callout } from "react-native-maps";
 import AppBarComp from "../components/appBar";
 import Fontisto from "react-native-vector-icons/Fontisto";
