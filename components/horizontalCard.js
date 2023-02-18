@@ -1,6 +1,6 @@
 import { Image, Text, View } from "react-native";
 
-const HorizontalCard = ({name,price,img, mercearia}) => {
+const HorizontalCard = ({ name, price, img, mercearia,unit }) => {
   return (
     <View
       style={{
@@ -37,7 +37,6 @@ const HorizontalCard = ({name,price,img, mercearia}) => {
           <Text
             style={{
               color: "#fff",
-              fontWeight: "bold",
               fontSize: 18,
             }}
           >
@@ -53,25 +52,25 @@ const HorizontalCard = ({name,price,img, mercearia}) => {
             <Text
               style={{
                 color: "#fff",
-                fontWeight: "bold",
               }}
             >
-             {price}
+              {price}
             </Text>
             <Text
               style={{
                 color: "#fff",
-                fontWeight: "bold",
               }}
             >
               €/kg
             </Text>
           </View>
-          <Text style={{
-            fontWeight: "bold",
-            color: "#fff"
-          }}
-          >{mercearia}</Text>
+          <Text
+            style={{
+              color: "#fff",
+            }}
+          >
+            {mercearia}
+          </Text>
         </View>
       </View>
 
@@ -115,7 +114,7 @@ const HorizontalCard = ({name,price,img, mercearia}) => {
               color: "#fff",
             }}
           >
-            6
+            {unit}
           </Text>
           <Text
             style={{

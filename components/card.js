@@ -1,9 +1,12 @@
 import { Image, TouchableOpacity } from "react-native";
 import { Card, Text } from "react-native-paper";
 
-const CardComponent = ({ name, ofertas,width,height,navigation }) => {
+const CardComponent = ({ name, ofertas,width,height,navigation,rating }) => {
   return (
-    <TouchableOpacity activeOpacity={1} onPress={()=> navigation.navigate('Mercearia')}>
+    <TouchableOpacity activeOpacity={1} onPress={()=> navigation.navigate('Mercearia',{
+      name,
+      rating
+    })}>
     <Card
       mode="elevated"
       style={{

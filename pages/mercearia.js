@@ -1,4 +1,4 @@
-import { ScrollView, Text, View, StyleSheet } from "react-native";
+import { ScrollView, Text, View, StyleSheet, Dimensions } from "react-native";
 import AppBarComp from "../components/appBar";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import MapView, { PROVIDER_GOOGLE, Marker, Callout } from "react-native-maps";
@@ -11,30 +11,14 @@ const PRODUCTS = [
     name: "cenoras",
     discription: "Produção Biológica",
     detalhe: "Quant. Min = 450 gr (3 un.)",
-    price: " 1,29€/kg",
+    price: " 1,60",
     img: require("../assets/images/carrot.jpg"),
   },
   {
     name: "Tomates",
     discription: "Produção Biológica",
     detalhe: "Quant. Min = 450 gr (3 un.)",
-    price: " 1,29€/kg",
-    img: require("../assets/images/couve.jpg"),
-  },
-
-  {
-    name: "Couve",
-    discription: "Produção Biológica",
-    detalhe: "Quant. Min = 450 gr (3 un.)",
-    price: " 1,29€/kg",
-    img: require("../assets/images/couve1.jpg"),
-  },
-
-  {
-    name: "Couve",
-    discription: "Produção Biológica",
-    detalhe: "Quant. Min = 450 gr (3 un.)",
-    price: " 1,29€/kg",
+    price: " 1,50",
     img: require("../assets/images/tomates.jpg"),
   },
 
@@ -42,25 +26,37 @@ const PRODUCTS = [
     name: "Couve",
     discription: "Produção Biológica",
     detalhe: "Quant. Min = 450 gr (3 un.)",
-    price: " 1,29€/kg",
+    price: " 1,04",
+    img: require("../assets/images/couve1.jpg"),
+  },
+
+ 
+
+  {
+    name: "Repolho",
+    discription: "Produção Biológica",
+    detalhe: "Quant. Min = 450 gr (3 un.)",
+    price: " 4,29",
     img: require("../assets/images/repolho.jpg"),
   },
   {
-    name: "Couve",
+    name: "Brocoli",
     discription: "Produção Biológica",
     detalhe: "Quant. Min = 450 gr (3 un.)",
-    price: " 1,29€/kg",
+    price: " 1,39",
     img: require("../assets/images/brocoli.jpg"),
   },
 ];
 
-const Mercearia = ({ navigation }) => {
-  const route = useRoute();
+const Mercearia = ({ navigation, route }) => {
+  const routes = useRoute();
+  const { name, rating } = route.params;
   const [favorityState, setFavorityState] = useState(false);
-
+  const windowWidth = Dimensions.get('window').width;
+  const windowHeight = Dimensions.get('window').height;
   return (
     <>
-      <AppBarComp navigation={navigation} route={route} />
+      <AppBarComp navigation={navigation} route={routes} />
       <View style={styles.container}>
         <MapView
           provider={PROVIDER_GOOGLE} // remove if not using Google Maps
@@ -75,7 +71,7 @@ const Mercearia = ({ navigation }) => {
           <Marker coordinate={{ latitude: 37.78825, longitude: -122.4324 }}>
             <Callout>
               <View>
-                <Text>Mercearia Marques</Text>
+                <Text>{name}</Text>
                 <Text>Praceta Gervásio Lobato, nº 13</Text>
                 <Text>1234-452 Lisboa</Text>
                 <View>
@@ -110,7 +106,7 @@ const Mercearia = ({ navigation }) => {
               fontWeight: "bold",
             }}
           >
-            Mercearia Do Senhor Manel
+            {name}
           </Text>
           {favorityState ? (
             <Ionicons
@@ -149,7 +145,7 @@ const Mercearia = ({ navigation }) => {
               margin: 5,
             }}
           >
-            4.3
+            {rating}
           </Text>
           <Text style={styles.textstyle}>Classificação</Text>
         </View>
@@ -171,20 +167,26 @@ const Mercearia = ({ navigation }) => {
           style={{
             display: "flex",
             flexDirection: "row",
-            width: "100%",
+            width:windowWidth,
             flexWrap: "wrap",
-            marginVertical: 10,
           }}
         >
           {PRODUCTS.map((produto, index) => (
-            <MerceariaCard
-              key={index}
-              nome={produto.name}
-              discription={produto.discription}
-              detalhe={produto.detalhe}
-              price={produto.price}
-              img={produto.img}
-            />
+            <View
+              style={{
+                margin: 5,
+                width: "47.5%",
+              }}
+            >
+              <MerceariaCard
+                key={index}
+                nome={produto.name}
+                discription={produto.discription}
+                detalhe={produto.detalhe}
+                price={produto.price}
+                img={produto.img}
+              />
+            </View>
           ))}
         </View>
       </ScrollView>

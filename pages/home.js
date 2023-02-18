@@ -5,7 +5,10 @@ import CardComponent from "../components/card";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import AppBarComp from "../components/appBar";
 import { useRoute } from "@react-navigation/native";
-import Produtos from "../produtos.json";
+import MerceariaCard from "../components/merceariaCard";
+import { PRODUTOS } from "../produtosdb";
+import { MY_ORDER } from "../constanst/constants";
+import { MyOrderContext } from "../context/myOrderContext";
 
 const ANIMAL_NAMES = [
   {
@@ -44,59 +47,97 @@ const ANIMAL_NAMES = [
     img: require("../assets/images/shopping-bag.png"),
   },
 ];
-const ItemRender = ({ name, img }) => {
-  return (
-    <View
-      style={{
-        display: "flex",
-        marginVertical: 10,
-        alignItems: "center",
-        marginHorizontal: 10,
-        height: 150,
-      }}
-    >
-      <View
-        style={{
-          width: 50,
-          height: 50,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          borderRadius: 50,
-          backgroundColor: "#fff",
-        }}
-      >
-        <Image
-          source={img}
-          style={{
-            width: 30,
-            height: 30,
-            resizeMode: "contain",
-          }}
-        />
-      </View>
-      <Text style={{ color: "#fff" }}>{name}</Text>
-    </View>
-  );
-};
 
 const Home = ({ navigation }) => {
   const [searchQuery, setSearchQuery] = React.useState("");
   const [searchControl, setSearchControl] = React.useState(false);
-
+  const myorder = React.useContext(MyOrderContext);
   const route = useRoute();
-
   const onChangeSearch = (query) => setSearchQuery(query);
 
-  const filterProducts = (query) => {
-   
-    return Produtos.filter(
-      (produto) => produto.name === query.trim().toLowerCase()
-    ).map((p) => (
-      <View key={p.id}>
-        <Text>{p.loja}</Text>
+  console.log(myorder);
+  const filterProducts = (query, navigation) => {
+    return (
+      <ScrollView
+        style={{
+          height: "100%",
+        }}
+      >
+        <View
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            width: "100%",
+            flexWrap: "wrap",
+            marginVertical: 10,
+          }}
+        >
+          {PRODUTOS.filter(
+            (produto) =>
+              produto.name === query.trim().toLowerCase() ||
+              produto.category === query.toLowerCase()
+          )
+            .sort(function (a, b) {
+              return a.price - b.price;
+            })
+            .map((p) => {
+              return (
+                <View  key={p.id} style={{
+                  margin:5,
+                  width: "47.5%",
+                }}>
+                  <MerceariaCard
+                   
+                    nome={p.name}
+                    loja={p.loja}
+                    price={p.price}
+                    rating={p.rating}
+                    img={p.img}
+                    navigation={navigation}
+                    from="search"
+                  />
+                </View>
+              );
+            })}
+        </View>
+      </ScrollView>
+    );
+  };
+
+  const ItemRender = ({ name, img }) => {
+    return (
+      <View
+        style={{
+          display: "flex",
+          marginVertical: 10,
+          alignItems: "center",
+          marginHorizontal: 10,
+          height: 150,
+        }}
+      >
+        <View
+          style={{
+            width: 50,
+            height: 50,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            borderRadius: 50,
+            backgroundColor: "#fff",
+          }}
+        >
+          <Image
+            source={img}
+            style={{
+              width: 30,
+              height: 30,
+              resizeMode: "contain",
+            }}
+          />
+        </View>
+        <Text style={{ color: "#fff" }}>{name}</Text>
       </View>
-    ));
+    );
   };
 
   return (
@@ -111,7 +152,6 @@ const Home = ({ navigation }) => {
         onChangeText={onChangeSearch}
         value={searchQuery}
         onSubmitEditing={() => {
-          searchQuery && setSearchControl(true);
           setSearchQuery("");
         }}
       />
@@ -125,59 +165,63 @@ const Home = ({ navigation }) => {
         horizontal={true}
         showsHorizontalScrollIndicator={false}
       />
-
-      <View
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          alignItems: "center",
-          padding: 10,
-        }}
-      >
-        <Text
-          style={{
-            fontSize: 17,
-            fontWeight: "700",
-            letterSpacing: 1,
-            color: "#fff",
-            textTransform: "uppercase",
-          }}
-        >
-          Ofertas Proximas de ti
-        </Text>
+      {!searchQuery && (
         <View
           style={{
-            marginLeft: 5,
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            padding: 10,
           }}
         >
-          <Ionicons name="location" size={20} color="#FFF" />
-        </View>
-      </View>
+          <Text
+            style={{
+              fontSize: 17,
+              fontWeight: "700",
+              letterSpacing: 1,
+              color: "#fff",
+              textTransform: "uppercase",
+            }}
+          >
+            Ofertas Proximas de ti
+          </Text>
 
-      {searchControl ? (
-        filterProducts(searchQuery)
+          <View
+            style={{
+              marginLeft: 5,
+            }}
+          >
+            <Ionicons name="location" size={20} color="#FFF" />
+          </View>
+        </View>
+      )}
+      {searchQuery || searchControl ? (
+        filterProducts(searchQuery, navigation)
       ) : (
         <ScrollView>
           <CardComponent
-            name="Mercearia do Senhor Manel"
+            name="Mercearia Marquez"
             ofertas="ofertas até 20%"
             width="100%"
             height={180}
             navigation={navigation}
+            rating="3.4"
           />
           <CardComponent
-            name="Frutaria LoopBack"
-            ofertas="ofertas até 10%"
+            name="Frutaria Dos Sabores"
+            ofertas="ofertas até 15%"
             width="100%"
             height={180}
             navigation={navigation}
+            rating="4.4"
           />
           <CardComponent
-            name="Mercearia Dos Productos"
-            ofertas="ofertas até 10%"
+            name="Mercearia Produtos Frescos"
+            ofertas="ofertas até 5%"
             width="100%"
             height={180}
             navigation={navigation}
+            rating="3"
           />
           <CardComponent
             name="Mercearia Alegre"
@@ -185,6 +229,7 @@ const Home = ({ navigation }) => {
             width="100%"
             height={180}
             navigation={navigation}
+            rating="4.7"
           />
         </ScrollView>
       )}

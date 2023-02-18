@@ -1,5 +1,5 @@
 {
-  "name": "meu-cabaz",
+  "name": "meu_cabaz",
   "version": "1.0.0",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
@@ -16,10 +16,11 @@
     "@react-navigation/native-stack": "^6.9.9",
     "expo": "~47.0.12",
     "expo-status-bar": "~1.4.2",
-    "lottie-react-native": "5.1.4",
+    "firebase": "^9.17.1",
     "react": "18.1.0",
     "react-native": "0.70.5",
     "react-native-gesture-handler": "~2.8.0",
+    "react-native-keyboard-aware-scroll-view": "^0.9.5",
     "react-native-maps": "^1.4.0",
     "react-native-paper": "^5.1.4",
     "react-native-reanimated": "~2.12.0",
@@ -28,8 +29,7 @@
     "react-native-vector-icons": "^9.2.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.9",
-    "react-native-tunnel": "^0.1.0"
+    "@babel/core": "^7.12.9"
   },
   "private": true
 }

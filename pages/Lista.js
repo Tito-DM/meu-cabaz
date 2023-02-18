@@ -1,8 +1,8 @@
 import { useRoute } from "@react-navigation/native";
 import { ScrollView, Text, View } from "react-native";
 import AppBarComp from "../components/appBar";
-import HorizontalCard from "../components/horizontalCard";
-import AntDesign from "react-native-vector-icons/AntDesign";
+import ListCompras from "../components/listCompras";
+import Ionicons from "react-native-vector-icons/Ionicons";
 
 const List = ({ navigation }) => {
   const route = useRoute();
@@ -28,48 +28,26 @@ const List = ({ navigation }) => {
       <ScrollView
         style={{
           marginBottom: 10,
+          marginHorizontal: 10,
         }}
       >
-        <HorizontalCard
-          name="Cenoura"
-          price="12"
-          img={require("../assets/images/carrot.jpg")}
-          mercearia="Mercearia manel"
+        <ListCompras
+          title="Compras para a próxima semana"
+          data="12/01/2023"
+          artigos="7"
+          navigation={navigation}
         />
-        <HorizontalCard
-          name="Brocoli"
-          price="12"
-          img={require("../assets/images/brocoli.jpg")}
-          mercearia="Mercearia manel"
-
+        <ListCompras
+          title="Bens para o bebé"
+          data="21/12/2022"
+          artigos="2"
+          navigation={navigation}
         />
-        <HorizontalCard
-          name="Tomates"
-          price="12"
-          img={require("../assets/images/tomates.jpg")}
-          mercearia="Mercearia manel"
-
-        />
-        <HorizontalCard
-          name="Couve"
-          price="12"
-          img={require("../assets/images/couve1.jpg")}
-          mercearia="Mercearia  manel"
-
-        />
-        <HorizontalCard
-          name="Repolho"
-          price="12"
-          img={require("../assets/images/couve.jpg")}
-          mercearia="Mercearia manel"
-
-        />
-        <HorizontalCard
-          name="Cenoura"
-          price="12"
-          img={require("../assets/images/carrot.jpg")}
-          mercearia="Mercearia manel"
-
+        <ListCompras
+          title="Ingredientes para a sopa"
+          data="14/09/2022"
+          artigos="3"
+          navigation={navigation}
         />
       </ScrollView>
       <View
@@ -84,16 +62,11 @@ const List = ({ navigation }) => {
           backgroundColor: "red",
           position: "absolute",
           bottom: 20,
-          left: 10,
+          right: 10,
           zIndex: 20,
         }}
       >
-        <AntDesign
-          name="shoppingcart"
-          size={30}
-          color="#fff"
-          onPress={() => {}}
-        />
+        <Ionicons name="add" size={30} color="#fff" onPress={() => {}} />
       </View>
     </View>
   );
