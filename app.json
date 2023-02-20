@@ -25,7 +25,12 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.pyong.meucabaz"
+      "package": "com.pyong.meucabaz",
+      "config": {
+        "googleMaps": {
+          "apiKey":"AIzaSyCmXZyFkLrdE7UnA6mes_ZsZSQa9FQjxq8"
+        }
+      }
     },
     "web": {
       "favicon": "./assets/favicon.png"

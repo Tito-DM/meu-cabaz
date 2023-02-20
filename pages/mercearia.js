@@ -77,7 +77,7 @@ const Mercearia = ({ navigation, route }) => {
       <AppBarComp navigation={navigation} route={routes} />
       <View style={styles.container}>
         <MapView
-          //provider={PROVIDER_GOOGLE} // remove if not using Google Maps
+          provider={PROVIDER_GOOGLE} // remove if not using Google Maps
           style={styles.map}
           region={{
             latitude: 37.78825,

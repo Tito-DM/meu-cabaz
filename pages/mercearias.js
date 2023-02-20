@@ -13,7 +13,7 @@ const Mercearias = ({ navigation }) => {
 
       <View style={styles.container}>
         <MapView
-          //provider={PROVIDER_GOOGLE} // remove if not using Google Maps
+          provider={PROVIDER_GOOGLE} // remove if not using Google Maps
           style={styles.map}
           region={{
             latitude: 38.67902,
