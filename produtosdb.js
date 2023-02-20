@@ -109,48 +109,6 @@ export const PRODUTOS=[
 
   },
 
-  {
-    id:"9",
-    name: "caparou",
-    price: "10",
-    loja: "Mercearia Do Dia",
-    rating: "3,5",
-    img: require("./assets/images/fish2.jpg"),
-    category:"peixe"
-
-
-  },
-  {
-    id:"10",
-    name: "pescada",
-    price: "13",
-    loja: "Mercearia Marquez",
-    rating: "3,5",
-    img: require("./assets/images/fish1.jpg"),
-    category:"peixe"
-
-
-  },
-
-  {
-    id:"11",
-    name: "carne de vaca",
-    price: "10",
-    loja: "Mercearia Do Dia",
-    rating: "3,5",
-    img: require("./assets/images/meat1.jpg"),
-    category:"carne"
-
-
-  },
-  {
-    id:"10",
-    name: "carne de porco",
-    price: "13",
-    loja: "Mercearia Marquez",
-    rating: "3,5",
-    img: require("./assets/images/meat2.jpg"),
-    category:"carne"
-
-  }
+  
+  
 ]

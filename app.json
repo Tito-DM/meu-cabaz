@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "meu_cabaz",
-    "slug": "meu_cabaz",
+    "name": "meu-cabaz",
+    "slug": "meu-cabaz",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

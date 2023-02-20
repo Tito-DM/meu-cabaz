@@ -23,13 +23,15 @@ const ComprasRecent = ({ navigation }) => {
         value={searchQuery}
       />
 
-      <ScrollView style={{
-        marginTop: 25
-      }}>
-        <ComprasLista />
-        <ComprasLista />
-        <ComprasLista />
-        <ComprasLista />
+      <ScrollView
+        style={{
+          marginTop: 25,
+        }}
+      >
+        <ComprasLista title="Mercearia Marquez" navigation={navigation} />
+        <ComprasLista title="Mercearia do Dia" navigation={navigation} />
+        <ComprasLista title="Mercearia Marquez" navigation={navigation} />
+        <ComprasLista title="Mercearia Marquez" navigation={navigation} />
       </ScrollView>
     </>
   );

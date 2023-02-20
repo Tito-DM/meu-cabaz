@@ -5,6 +5,7 @@ import { MyOrderProvider } from "./context/myOrderContext";
 import ComprasRecent from "./pages/comprasRecentes";
 import Conta from "./pages/conta";
 import Favorities from "./pages/favority";
+import Help from "./pages/help";
 import Home from "./pages/home";
 import List from "./pages/Lista";
 import Login from "./pages/login";
@@ -38,6 +39,7 @@ export default function App() {
           <Stack.Screen name="ComprasRecent" component={ComprasRecent} />
           <Stack.Screen name="Mercearia" component={Mercearia} />
           <Stack.Screen name="ProdutoListCompra" component={ProdutoListCompra} />
+          <Stack.Screen name="Help" component={Help} />
           <Stack.Screen name="Favorities" component={Favorities} />
         </Stack.Navigator>
       </MyOrderProvider>

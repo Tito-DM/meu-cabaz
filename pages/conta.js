@@ -123,6 +123,10 @@ const Conta = ({ navigation }) => {
             }}
           >
             <AntDesign name="questioncircleo" size={30} color="#fff" />
+            <TouchableOpacity
+              activeOpacity={1}
+              onPress={() => navigation.navigate("Help")}
+            >
             <Text
               style={{
                 color: "#fff",
@@ -133,6 +137,7 @@ const Conta = ({ navigation }) => {
             >
               Ajuda
             </Text>
+            </TouchableOpacity>
           </View>
         </ScrollView>
       </View>

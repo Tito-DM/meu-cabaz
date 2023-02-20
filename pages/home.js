@@ -1,14 +1,14 @@
 import React from "react";
-import { ScrollView, View, Text, FlatList, Image } from "react-native";
-import { Searchbar } from "react-native-paper";
+import { ScrollView, View, Text, FlatList, Image ,StyleSheet} from "react-native";
+import { Searchbar, Checkbox} from "react-native-paper";
 import CardComponent from "../components/card";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import AppBarComp from "../components/appBar";
 import { useRoute } from "@react-navigation/native";
 import MerceariaCard from "../components/merceariaCard";
 import { PRODUTOS } from "../produtosdb";
-import { MY_ORDER } from "../constanst/constants";
 import { MyOrderContext } from "../context/myOrderContext";
+import Dialog from "react-native-dialog";
 
 const ANIMAL_NAMES = [
   {
@@ -54,7 +54,24 @@ const Home = ({ navigation }) => {
   const myorder = React.useContext(MyOrderContext);
   const route = useRoute();
   const onChangeSearch = (query) => setSearchQuery(query);
+  const [visible, setVisible] = React.useState(false);
+  const [checked1, setChecked1] = React.useState(false);
+  const [checked2, setChecked2] = React.useState(false);
+  const [checked3, setChecked3] = React.useState(false);
 
+  const showDialog = () => {
+    setVisible(true);
+  };
+
+  const handleCancel = () => {
+    setVisible(false);
+  };
+
+  const handleDelete = () => {
+    // The user has pressed the "Delete" button, so here you can do your own logic.
+    // ...Your logic
+    setVisible(false);
+  };
   console.log(myorder);
   const filterProducts = (query, navigation) => {
     return (
@@ -63,6 +80,64 @@ const Home = ({ navigation }) => {
           height: "100%",
         }}
       >
+
+<View style={styles.container1}>
+          <Dialog.Container visible={visible}>
+            <Dialog.Title>Account delete</Dialog.Title>
+            <Dialog.Description>
+              <View
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  alignItems: "center",
+                }}
+              >
+                <Checkbox
+                  status={checked1 ? "checked" : "unchecked"}
+                  onPress={() => {
+                    setChecked1(!checked1);
+                  }}
+                />
+                <Text>Compras para a próxima semana</Text>
+              </View>
+
+              <View
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  alignItems: "center",
+                }}
+              >
+                <Checkbox
+                  status={checked2 ? "checked" : "unchecked"}
+                  onPress={() => {
+                    setChecked2(!checked2);
+                  }}
+                />
+                <Text>Bens para o bebé</Text>
+              </View>
+
+              <View
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  alignItems: "center",
+                }}
+              >
+               
+                <Checkbox
+                  status={checked3 ? "checked" : "unchecked"}
+                  onPress={() => {
+                    setChecked3(!checked3);
+                  }}
+                />
+                <Text>Ingredientes para a sopa</Text>
+              </View>
+            </Dialog.Description>
+            <Dialog.Button label="Cancel" onPress={handleCancel} />
+            <Dialog.Button label="Ok" onPress={handleDelete} />
+          </Dialog.Container>
+        </View>
         <View
           style={{
             display: "flex",
@@ -82,12 +157,15 @@ const Home = ({ navigation }) => {
             })
             .map((p) => {
               return (
-                <View  key={p.id} style={{
-                  margin:5,
-                  width: "47.5%",
-                }}>
+                <View
+                  key={p.id}
+                  style={{
+                    margin: 5,
+                    width: "47.5%",
+                  }}
+                >
                   <MerceariaCard
-                   
+                    setVisible={setVisible}
                     nome={p.name}
                     loja={p.loja}
                     price={p.price}
@@ -236,5 +314,12 @@ const Home = ({ navigation }) => {
     </>
   );
 };
-
+const styles = StyleSheet.create({
+  container1: {
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+});
 export default Home;

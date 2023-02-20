@@ -1,9 +1,11 @@
-const { Image, StyleSheet, View, Text } = require("react-native");
+const { Image, StyleSheet, View, Text, TouchableOpacity } = require("react-native");
 const { Divider } = require("react-native-paper");
 
-const ComprasLista = () => {
+const ComprasLista = ({navigation,title}) => {
   return (
-    <>
+    <TouchableOpacity 
+    activeOpacity={1}
+    onPress={() => navigation.navigate("ProdutoListCompra", { title })}>
       <View
         style={{
           display: "flex",
@@ -35,7 +37,7 @@ const ComprasLista = () => {
               marginLeft: 20,
             }}
           >
-            <Text style={styles.textStyle}>Mercearia Marques</Text>
+            <Text style={styles.textStyle}>{title}</Text>
             <Text style={styles.textStyle}>Nº de Artigos: 9</Text>
             <Text style={styles.textStyle}>12/01/2023</Text>
           </View>
@@ -50,7 +52,7 @@ const ComprasLista = () => {
         </View>
       </View>
       <Divider bold={true} />
-    </>
+    </TouchableOpacity>
   );
 };
 

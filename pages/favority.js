@@ -7,7 +7,7 @@ const { Image, StyleSheet, View, Text } = require("react-native");
 const { Divider } = require("react-native-paper");
 import Ionicons from "react-native-vector-icons/Ionicons";
 
-const Lista = () => {
+const Lista = ({ name }) => {
   return (
     <>
       <View
@@ -40,20 +40,19 @@ const Lista = () => {
               marginLeft: 20,
             }}
           >
-            <Text style={styles.textStyle}>Mercearia Marques</Text>
-          
+            <Text style={styles.textStyle}>{name}</Text>
           </View>
         </View>
 
         <View>
-        <Ionicons
-              name="heart"
-              size={30}
-              color="#fff"
-              style={{
-                marginRight: 5,
-              }}
-            />
+          <Ionicons
+            name="heart"
+            size={30}
+            color="#fff"
+            style={{
+              marginRight: 5,
+            }}
+          />
         </View>
       </View>
       <Divider bold={true} />
@@ -91,7 +90,7 @@ const Favorities = ({ navigation }) => {
           color: "#fff",
           fontSize: 30,
           fontWeight: "bold",
-          marginTop:40,
+          marginTop: 40,
           letterSpacing: 2,
           marginLeft: 5,
         }}
@@ -103,10 +102,10 @@ const Favorities = ({ navigation }) => {
           marginTop: 10,
         }}
       >
-        <Lista />
-        <Lista />
-        <Lista />
-        <Lista />
+        <Lista name="Frutaria Dos Sabores" />
+        <Lista name="Mercearia Marquez" />
+        <Lista name="Mercearia Produtos Frescos" />
+        <Lista name="Mercearia Alegre" />
       </ScrollView>
     </>
   );

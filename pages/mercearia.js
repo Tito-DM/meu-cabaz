@@ -1,10 +1,12 @@
+import React from "react";
 import { ScrollView, Text, View, StyleSheet, Dimensions } from "react-native";
 import AppBarComp from "../components/appBar";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import MapView, { PROVIDER_GOOGLE, Marker, Callout } from "react-native-maps";
 import MerceariaCard from "../components/merceariaCard";
 import { useRoute } from "@react-navigation/native";
-import { useState } from "react";
+import Dialog from "react-native-dialog";
+import { Checkbox } from "react-native-paper";
 
 const PRODUCTS = [
   {
@@ -30,8 +32,6 @@ const PRODUCTS = [
     img: require("../assets/images/couve1.jpg"),
   },
 
- 
-
   {
     name: "Repolho",
     discription: "Produção Biológica",
@@ -51,9 +51,27 @@ const PRODUCTS = [
 const Mercearia = ({ navigation, route }) => {
   const routes = useRoute();
   const { name, rating } = route.params;
-  const [favorityState, setFavorityState] = useState(false);
-  const windowWidth = Dimensions.get('window').width;
-  const windowHeight = Dimensions.get('window').height;
+  const [favorityState, setFavorityState] = React.useState(false);
+  const windowWidth = Dimensions.get("window").width;
+  const windowHeight = Dimensions.get("window").height;
+  const [visible, setVisible] = React.useState(false);
+  const [checked1, setChecked1] = React.useState(false);
+  const [checked2, setChecked2] = React.useState(false);
+  const [checked3, setChecked3] = React.useState(false);
+
+  const showDialog = () => {
+    setVisible(true);
+  };
+
+  const handleCancel = () => {
+    setVisible(false);
+  };
+
+  const handleDelete = () => {
+    // The user has pressed the "Delete" button, so here you can do your own logic.
+    // ...Your logic
+    setVisible(false);
+  };
   return (
     <>
       <AppBarComp navigation={navigation} route={routes} />
@@ -167,27 +185,85 @@ const Mercearia = ({ navigation, route }) => {
           style={{
             display: "flex",
             flexDirection: "row",
-            width:windowWidth,
+            width: windowWidth,
             flexWrap: "wrap",
           }}
         >
           {PRODUCTS.map((produto, index) => (
             <View
+              key={index}
               style={{
                 margin: 5,
                 width: "47.5%",
               }}
             >
               <MerceariaCard
-                key={index}
                 nome={produto.name}
                 discription={produto.discription}
                 detalhe={produto.detalhe}
                 price={produto.price}
                 img={produto.img}
+                setVisible={setVisible}
               />
             </View>
           ))}
+        </View>
+        <View style={styles.container1}>
+          <Dialog.Container visible={visible}>
+            <Dialog.Title>Account delete</Dialog.Title>
+            <Dialog.Description>
+              <View
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  alignItems: "center",
+                }}
+              >
+                <Checkbox
+                  status={checked1 ? "checked" : "unchecked"}
+                  onPress={() => {
+                    setChecked1(!checked1);
+                  }}
+                />
+                <Text>Compras para a próxima semana</Text>
+              </View>
+
+              <View
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  alignItems: "center",
+                }}
+              >
+                <Checkbox
+                  status={checked2 ? "checked" : "unchecked"}
+                  onPress={() => {
+                    setChecked2(!checked2);
+                  }}
+                />
+                <Text>Bens para o bebé</Text>
+              </View>
+
+              <View
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  alignItems: "center",
+                }}
+              >
+               
+                <Checkbox
+                  status={checked3 ? "checked" : "unchecked"}
+                  onPress={() => {
+                    setChecked3(!checked3);
+                  }}
+                />
+                <Text>Ingredientes para a sopa</Text>
+              </View>
+            </Dialog.Description>
+            <Dialog.Button label="Cancel" onPress={handleCancel} />
+            <Dialog.Button label="Ok" onPress={handleDelete} />
+          </Dialog.Container>
         </View>
       </ScrollView>
     </>
@@ -206,6 +282,12 @@ const styles = StyleSheet.create({
   },
   textstyle: {
     color: "#fff",
+  },
+  container1: {
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
 export default Mercearia;
